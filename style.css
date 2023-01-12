@@ -111,6 +111,7 @@ textarea{
   background-color: #888;
 }
 
+/* User form */
 .user {
   box-shadow: 3px 3px 9px #00000040;
   padding: 1rem;
@@ -123,7 +124,6 @@ textarea{
 .user_dark {
   background-color: #333;
 }
-
 
 .user_email,
 .user_subject,
