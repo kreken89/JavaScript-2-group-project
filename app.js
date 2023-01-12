@@ -1,8 +1,8 @@
-// API kay
+// API key
 // https://fnd22-shared.azurewebsites.net/swagger/index.html
 
 const BASE_URL = 'https://fnd22-shared.azurewebsites.net/swagger/index.html';
-
+const CASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases"
 const email = document.querySelector('#email_input')
 const subject = document.querySelector('#subject_input')
 const message = document.querySelector('#message_input')
@@ -10,27 +10,33 @@ const form = document.querySelector('#task_form')
 //const btn = document.querySelector(".btn")
 
 const cases = []
-let JSONString = ''
-
+let newPost = {}
 form.addEventListener('submit', (e) =>{
     e.preventDefault()
 
-    const tempObj = {email: email.value, subject: subject.value, message: message.value}
-    JSONString = JSON.stringify(Object.assign(tempObj))
+    newPost = {email: email.value, subject: subject.value, message: message.value}
     
-    
+    console.log(JSON.stringify(newPost))
+
+    postCase()
 })
 
 
-/* const postCase = () => {
-    fetch("https://fnd22-shared.azurewebsites.net/api/Cases", {
+const postCase = () => {
+    return fetch(CASE_URL, {
         method: 'POST',
-        body: JSONString
+        body: JSON.stringify(newPost), 
+        headers: {
+            "Content-Type": "application/json-patch+json"
+        }
         })
         .then(res => res.json())
-        .then( data => console.log(data))
+        .then( data => {
+            cases.push({...newPost, id: data})
+            console.log(cases)
+        })
         .catch(err =>  console.log(err))
-} */
+}
         
 
      
@@ -40,7 +46,7 @@ form.addEventListener('submit', (e) =>{
 
 const getCase = () => {
     
-    fetch("https://fnd22-shared.azurewebsites.net/api/Cases")
+     return fetch(CASE_URL)
         
         .then(res => res.json())
         .then(data => {
@@ -49,6 +55,7 @@ const getCase = () => {
                 cases.push(element)
             });
             console.log(cases)
+            return cases
         })
     
 }
