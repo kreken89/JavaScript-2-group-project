@@ -1,10 +1,9 @@
-// API kay
-// https://fnd22-shared.azurewebsites.net/swagger/index.html
-
 const BASE_URL = 'https://fnd22-shared.azurewebsites.net/swagger/index.html';
-// const CASSEID_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases{id}';
-// const COMMENTS_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments';
-// const STATUSES_URL = 'https://fnd22-shared.azurewebsites.net/api/Statuses';
+const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases';
+const email = document.querySelector('#email_input');
+const subject = document.querySelector('#subject_input');
+const message = document.querySelector('#message_input');
+const form = document.querySelector('#task_form');
 
 // GET
 
