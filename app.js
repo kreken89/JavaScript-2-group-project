@@ -33,23 +33,11 @@ const postCase = () => {
         })
         .then(res => res.json())
         .then( data => {
-            cases.shift({...newPost, id: data})
+            cases.unshift({...newPost, id: data})
             console.log(cases)
             caseList(newPost.subject, newPost.email, newPost.message, 'Just Now')
         })
         .catch(err =>  console.log(err))
-}
-        
-const caseList = (subject, email, message, time) => {
-    containter.innerHTML += 
-    `<div class="user user_dark">
-        <span>${time.replace('T', ' ').substring(0, 16)}</span>
-        <p class="user_subject">${subject}</p>
-        <p class="user_email">${email}</p>
-        <p class="user_message">${message}</p>
-    
-        <button class="submit_btn">Add comment</button>
-    </div>`
 }
 
 const getCase = () => {
@@ -64,9 +52,9 @@ const getCase = () => {
                 
             });
             cases.sort(function(a, b){
-                if (a.created > b.created)
-                    return -1
                 if (a.created < b.created)
+                    return -1
+                if (a.created > b.created)
                     return 1
                 return 0     
             } )
@@ -80,5 +68,17 @@ const getCase = () => {
             return cases
         })
     
+}
+
+const caseList = (subject, email, message, time) => {
+    containter.innerHTML = 
+    `<div class="user user_dark">
+        <span>${time.replace('T', ' ').substring(0, 16)}</span>
+        <p class="user_subject">${subject}</p>
+        <p class="user_email">${email}</p>
+        <p class="user_message">${message}</p>
+    
+        <button class="submit_btn">Add comment</button>
+    </div>` + containter.innerHTML
 }
 getCase()
