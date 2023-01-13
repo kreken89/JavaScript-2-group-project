@@ -44,7 +44,7 @@ const postCase = () => {
 
 
 
-const getCase = () => {
+/* const getCase = () => {
     
      return fetch(CASE_URL)
         
@@ -58,6 +58,4 @@ const getCase = () => {
             return cases
         })
     
-}
-
-getCase()
+} */
