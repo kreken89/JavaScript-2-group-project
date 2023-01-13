@@ -35,14 +35,15 @@ const postCase = () => {
         .then( data => {
             cases.shift({...newPost, id: data})
             console.log(cases)
-            caseList(newPost.subject, newPost.email, newPost.message)
+            caseList(newPost.subject, newPost.email, newPost.message, 'Just Now')
         })
         .catch(err =>  console.log(err))
 }
         
-const caseList = (subject, email, message) => {
+const caseList = (subject, email, message, time) => {
     containter.innerHTML += 
     `<div class="user user_dark">
+        <span>${time.replace('T', ' ').substring(0, 16)}</span>
         <p class="user_subject">${subject}</p>
         <p class="user_email">${email}</p>
         <p class="user_message">${message}</p>
@@ -71,7 +72,7 @@ const getCase = () => {
             } )
             console.log(cases)
             cases.forEach(element => {
-                caseList(element.subject, element.email, element.message)
+                caseList(element.subject, element.email, element.message, element.created)
             });
             /* for(let i = 0; i<5; i++){
                 caseList(data[i].subject, data[i].email, data[i].message)
