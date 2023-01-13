@@ -26,7 +26,7 @@
                 <input type="text" name="task" id="subject_input" placeholder="Subject">
                 <textarea name="message" id="message_input" placeholder="Your message..."></textarea>
               </div>
-              
+
               <input type="submit" value="Add Task" class="btn">
             </form>
           </div>
@@ -43,21 +43,35 @@
         </div>
       </div>
     </div>
-
+    <!-- Cases container -->
     <div class="case_container">
-        
+
+
+      <button class="show-modal">Add comment</button>
+      <!-- Modal -->
+      <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+
+        <span class="modal_span">Add your comment</span>
+        <textarea name="message" id="message_input" placeholder="Insert your comment..."></textarea>
+      </div>
+      <div class="overlay hidden"></div>
+
+
     </div>
+
+
     <!-- User form -->
-        <!-- <div class="user user_dark">
+    <!-- <div class="user user_dark">
             <p class="user_subject">Dataproblem</p>
             <p class="user_email">mikael@hotmail.com</p>
             <p class="user_message">Jag har stora problem med min dator, skulle vilja att ni fixar detta åt mig.</p>
              <textarea id="message_input" placeholder="Add your comment"></textarea> 
             <button class="submit_btn">Add comment</button>
       </div> -->
-        
+
   </div>
-  
+
 </body>
 
 </html>
