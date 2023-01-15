@@ -73,13 +73,13 @@ const getCase = () => {
 const caseList = (subject, email, message, time) => {
   containter.innerHTML =
     `<div class="user user_dark">
-        <span>${time.replace('T', ' ').substring(0, 16)}</span>
+        <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
         <p class="user_subject">${subject}</p>
         <p class="user_email">${email}</p>
         <p class="user_message">${message}</p>
     
         
-        <button class="show-modal">Add comment</button>
+        <button class="show_modal">Add comment</button>
         </div>
         
         ` + containter.innerHTML;
@@ -87,8 +87,8 @@ const caseList = (subject, email, message, time) => {
   // Comment Modal Add comment
   const modal = document.querySelector('.modal');
   const overlay = document.querySelector('.overlay');
-  const btnCloseModal = document.querySelector('.close-modal');
-  const btnOpenModal = document.querySelector('.show-modal');
+  const btnCloseModal = document.querySelector('.close_modal');
+  const btnOpenModal = document.querySelector('.show_modal');
   
   // Modal functions
   const openModal = function () {
