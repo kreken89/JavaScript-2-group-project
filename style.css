@@ -135,7 +135,7 @@ ul{
   list-style: none;
 }
 
-li{
+.status{
   font-size: .5rem;
   margin-right: 1rem;
   padding: .2rem .3rem;
@@ -311,6 +311,7 @@ body{
 }
 
 .container_details{
+  padding: 2rem;
   width: 50rem;
   height: 80vh;
   background-color: #333;
@@ -318,6 +319,15 @@ body{
   box-shadow: 3px 3px 9px #00000040;
   margin:3rem;
 }
+.commentList{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.comment{
+
+}
+
 
 
 
