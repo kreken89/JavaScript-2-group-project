@@ -1,17 +1,21 @@
-const id = new URLSearchParams(window.location.search).get('id')
+const id = new URLSearchParams(window.location.search).get('id');
 const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases/';
 const wrapper = document.querySelector('.container_details');
 
-console.log(id)
-console.log(CASE_URL + id)
+console.log(id);
+console.log(CASE_URL + id);
 
 const getCase = () => {
-    return fetch(CASE_URL + id)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
+  return fetch(CASE_URL + id)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
 
-        wrapper.innerHTML = `
+    //   let greenStatus = document.querySelector('.green');
+    //   let orangeStatus = document.querySelector('.orange');
+    //   let redStatus = document.querySelector('.red');
+
+      wrapper.innerHTML = `
             <div class="inline">
                 <div class="statusInfo">
                  <button class="green status">Avslutad</button>
@@ -35,24 +39,29 @@ const getCase = () => {
             <input type="submit" value="Add Comment" class="btn">
             `;
 
-            const commentList = document.createElement('ul')
-            commentList.className = 'commentList'
-            wrapper.appendChild(commentList)
-            console.log(data.comments.length)
-            for(let i = 0; i<data.comments.length; i++){
-                const comment = document.createElement('li')
-                comment.className = 'comment'
-                comment.innerText = `${data.comments[i]}`
-                commentList.appendChild(comment)
-            }
+      const commentList = document.createElement('ul');
+      commentList.className = 'commentList';
+      wrapper.appendChild(commentList);
+      console.log(data.comments.length);
+      for (let i = 0; i < data.comments.length; i++) {
+        const comment = document.createElement('li');
+        comment.className = 'comment';
+        comment.innerText = `${data.comments[i]}`;
+        commentList.appendChild(comment);
+      }
 
-      });
-  };
+      // greenStatus.addEventListener('click', () => {
+      //     greenStatus.style.backgroundColor = '#32a852';
+      // })
+      // orangeStatus.addEventListener('click', () => {
+      //     orangeStatus.style.backgroundColor = '#bf912c';
+      // })
+      // redStatus.addEventListener('click', () => {
+      //     redStatus.style.backgroundColor = '#bf281d';
+      // })
+    });
+};
 
-  const postComment = () => {
-    
-  }
+const postComment = () => {};
 
-  getCase()
-
-  
+getCase();
