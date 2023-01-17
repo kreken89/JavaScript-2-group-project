@@ -326,13 +326,39 @@ body{
   background-color: #333;
   border-radius: 0.7rem;
   box-shadow: 3px 3px 9px #00000040;
-  margin:3rem;
+  margin: 3rem 0 1rem 0;
 }
 .commentList{
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
+.parent_back_link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back_link{
+  width: 50rem;
+  padding: 1rem;
+  background-color: #333;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 0.7rem;
+  box-shadow: 3px 3px 9px #00000040;
+}
+
+.back_link:hover{
+  background-color: #888;
+  transition: all 0.5s;
+}
+
+.back_link:active{
+  background-color: #333;
+}
+
 /* .comment{
 
 } */
