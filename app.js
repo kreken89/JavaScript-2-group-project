@@ -134,12 +134,14 @@ const caseList = (subject, email, message, time, id) => {
     <p class="user_email">${email}</p>
     <p class="user_message">${message}</p>
     
-        
-        <a href="details.html?id=${id}" class="show_modal">Add comment</a>
+    <a href="details.html?id=${id}" class="show_modal">Add comment</a>
     </div>
+    
+    ` + containter.innerHTML;
         
-        ` + containter.innerHTML;
-
+    // <form action="details.html?id=${id}" >
+    //     <input type="submit" value="Add comment" />
+    // </form>
 
 
  /*  // Comment Modal Add comment
@@ -165,8 +167,8 @@ const caseList = (subject, email, message, time, id) => {
 getCase();
 
 // How to respond on keyboard events
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    closeModal();
-  }
-});
+// document.addEventListener('keydown', function (e) {
+//   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+//     closeModal();
+//   }
+// });

@@ -22,10 +22,11 @@ const getCase = () => {
                   .replace('T', ' ')
                   .substring(0, 16)}</span>
             </div>
-            <div class="card bg-secondary p-2 text-white">
+
+            <div class="card_details">
                 <h2>${data.subject}</h2>
-                <p>${data.email}</p>
-                <p>${data.message}</p>
+                <p class="p_details">${data.email}</p>
+                <p class="p_details">${data.message}</p>
                 <br>
                 <h2>Comments:</h2>
                 

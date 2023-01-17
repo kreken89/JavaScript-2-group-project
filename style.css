@@ -310,6 +310,28 @@ body{
   justify-content: center;
   align-items: center;
 }
+/* Js details styling */
+.card_details{
+  padding: 2rem .5rem;
+}
+h2{
+  font-size: 2rem;
+  font-weight: 400;
+}
+h3{
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.p_details{
+  margin: 1rem 0;
+  padding-bottom: 0.2rem;
+  font-size: 1rem;
+  border-bottom: 1px solid white;
+}
+#message_input{
+  height: 9em;
+}
+
 
 .header_details{
   display: flex;
