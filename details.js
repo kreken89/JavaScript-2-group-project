@@ -11,16 +11,12 @@ const getCase = () => {
     .then((data) => {
       console.log(data);
 
-    //   let greenStatus = document.querySelector('.green');
-    //   let orangeStatus = document.querySelector('.orange');
-    //   let redStatus = document.querySelector('.red');
-
       wrapper.innerHTML = `
             <div class="inline">
                 <div class="statusInfo">
-                 <button class="green status">Avslutad</button>
-                 <button class="orange status">Pågående</button>
-                 <button class="red status">Ej påbörjad</button>
+                 <button class="green status active">Avslutad</button>
+                 <button class="orange status active">Pågående</button>
+                 <button class="red status active">Ej påbörjad</button>
                 </div>
                 <span class="time_add">${data.created
                   .replace('T', ' ')
@@ -50,18 +46,32 @@ const getCase = () => {
         commentList.appendChild(comment);
       }
 
-      // greenStatus.addEventListener('click', () => {
-      //     greenStatus.style.backgroundColor = '#32a852';
-      // })
-      // orangeStatus.addEventListener('click', () => {
-      //     orangeStatus.style.backgroundColor = '#bf912c';
-      // })
-      // redStatus.addEventListener('click', () => {
-      //     redStatus.style.backgroundColor = '#bf281d';
-      // })
+      const caseStatus = document.querySelector('button');
+      
+      caseStatus.addEventListener('click', (e) => {
+          let greenStatus = document.querySelector('.green');
+          let orangeStatus = document.querySelector('.orange');
+          let redStatus = document.querySelector('.red');
+
+          if (e.target === greenStatus) {
+            orangeStatus.style.display = 'none';
+            redStatus.style.display = 'none';
+            greenStatus.style.backgroundColor = '#3aeb34';
+          } else if (e.target === orangeStatus) {
+            orangeStatus.style.backgroundColor = '#bf912c';
+            redStatus.style.display = 'none';
+            greenStatus.style.display = 'none';
+          } else if (e.target === redStatus) {
+            orangeStatus.style.display = 'none';
+            redStatus.style.backgroundColor = '#bf281d';
+            greenStatus.style.display = 'none';
+          } else {
+            return false;
+          }
+        });
+      
     });
 };
-
 const postComment = () => {};
 
 getCase();
