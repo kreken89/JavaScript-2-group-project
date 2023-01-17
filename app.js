@@ -13,7 +13,7 @@ const containter = document.querySelector('.case_container');
 const cases = [];
 let newPost = {};
 form.addEventListener('submit', (e) => {
-  e.preventDefault();
+
 
   newPost = {
     email: email.value,
@@ -73,9 +73,22 @@ const getCase = () => {
 };
 
 const caseList = (subject, email, message, time, id) => {
-    /* const card = document.createElement('div')
-    card.className = 'user user_dark'
+  /*  
+  const card = document.createElement('div')
+  card.className = 'user user_dark'
 
+  const inline = document.createElement('div')
+  inline.className = 'inline'
+
+  const UList = document.createElement('ul')
+
+    const list = document.createElement('li')
+    list.className = 'green'
+    list.innerText = ''
+
+    list.innerText = ''
+    list.innerText = ''
+  
     const cardTime = document.createElement('span')
     cardTime.className = 'time_add'
     cardTime.innerText = time.replace('T', ' ').substring(0, 16)
@@ -96,37 +109,15 @@ const caseList = (subject, email, message, time, id) => {
     cardBtn.className = 'show_modal'
     cardBtn.innerText = 'Add comment'
 
-    const modalWindow = document.createElement('div')
-    modalWindow.className = 'modal hidden'
-
-    const modalClose = document.createElement('button')
-    modalClose.className = 'close_modal'
-    modalClose.innerText = '&times;'
-
-    const modalSpan = document.createElement('span')
-    modalSpan.className = 'modal_span'
-    modalSpan.innerText = 'Add your comment'
-
-    const modalInput = document.createElement('textarea')
-    modalInput.id = 'message_input'
-    modalInput.placeholder = ' Insert your comment...'
-
-    const modalSubmit = document.createElement('button')
-    modalSubmit.className = 'close_modal_add_comment'
-    modalSubmit.innerText = 'Add comment'
-
-    containter.appendChild(card)
+    
+    containter.appendChild(inline)
+    inline.appendChild(card)
     card.appendChild(cardTime)
     card.appendChild(cardSubject)
     card.appendChild(cardEmail)
     card.appendChild(cardMessage)
     card.appendChild(cardBtn)
-    
-    containter.appendChild(modalWindow)
-    modalWindow.appendChild(modalClose)
-    modalWindow.appendChild(modalSpan)
-    modalWindow.appendChild(modalInput)
-    modalWindow.appendChild(modalSubmit) */
+      */
     
   containter.innerHTML =
     `<div class="user user_dark">
