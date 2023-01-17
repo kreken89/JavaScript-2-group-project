@@ -1,13 +1,14 @@
 // API key
 // https://fnd22-shared.azurewebsites.net/swagger/index.html
 
-const BASE_URL = 'https://fnd22-shared.azurewebsites.net/swagger/index.html';
+//const BASE_URL = 'https://fnd22-shared.azurewebsites.net/swagger/index.html';
 const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases';
 const email = document.querySelector('#email_input');
 const subject = document.querySelector('#subject_input');
 const message = document.querySelector('#message_input');
 const form = document.querySelector('#task_form');
 const containter = document.querySelector('.case_container');
+
 
 const cases = [];
 let newPost = {};
@@ -37,7 +38,7 @@ const postCase = () => {
     .then((data) => {
       cases.unshift({ ...newPost, id: data });
       console.log(cases);
-      caseList(newPost.subject, newPost.email, newPost.message, 'Just Now');
+      caseList(newPost.subject, newPost.email, newPost.message, 'Just Now', newPost.id);
     })
     .catch((err) => console.log(err));
 };
@@ -60,7 +61,8 @@ const getCase = () => {
           element.subject,
           element.email,
           element.message,
-          element.created
+          element.created,
+          element.id
         );
       });
       /* for(let i = 0; i<5; i++){
@@ -70,7 +72,62 @@ const getCase = () => {
     });
 };
 
-const caseList = (subject, email, message, time) => {
+const caseList = (subject, email, message, time, id) => {
+    /* const card = document.createElement('div')
+    card.className = 'user user_dark'
+
+    const cardTime = document.createElement('span')
+    cardTime.className = 'time_add'
+    cardTime.innerText = time.replace('T', ' ').substring(0, 16)
+
+    const cardSubject = document.createElement('p')
+    cardSubject.className = 'user_subject'
+    cardSubject.innerText = subject
+
+    const cardEmail = document.createElement('p')
+    cardEmail.className = 'user_email'
+    cardEmail.innerText = email
+
+    const cardMessage = document.createElement('p')
+    cardMessage.className = 'user_message'
+    cardMessage.innerText = message
+
+    const cardBtn = document.createElement('a')
+    cardBtn.className = 'show_modal'
+    cardBtn.innerText = 'Add comment'
+
+    const modalWindow = document.createElement('div')
+    modalWindow.className = 'modal hidden'
+
+    const modalClose = document.createElement('button')
+    modalClose.className = 'close_modal'
+    modalClose.innerText = '&times;'
+
+    const modalSpan = document.createElement('span')
+    modalSpan.className = 'modal_span'
+    modalSpan.innerText = 'Add your comment'
+
+    const modalInput = document.createElement('textarea')
+    modalInput.id = 'message_input'
+    modalInput.placeholder = ' Insert your comment...'
+
+    const modalSubmit = document.createElement('button')
+    modalSubmit.className = 'close_modal_add_comment'
+    modalSubmit.innerText = 'Add comment'
+
+    containter.appendChild(card)
+    card.appendChild(cardTime)
+    card.appendChild(cardSubject)
+    card.appendChild(cardEmail)
+    card.appendChild(cardMessage)
+    card.appendChild(cardBtn)
+    
+    containter.appendChild(modalWindow)
+    modalWindow.appendChild(modalClose)
+    modalWindow.appendChild(modalSpan)
+    modalWindow.appendChild(modalInput)
+    modalWindow.appendChild(modalSubmit) */
+    
   containter.innerHTML =
     `<div class="user user_dark">
         <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
@@ -79,12 +136,14 @@ const caseList = (subject, email, message, time) => {
         <p class="user_message">${message}</p>
     
         
-        <button class="show_modal">Add comment</button>
+        <a href="details.html?id=${id}"class="show_modal">Add comment</a>
         </div>
         
         ` + containter.innerHTML;
 
-  // Comment Modal Add comment
+
+
+ /*  // Comment Modal Add comment
   const modal = document.querySelector('.modal');
   const overlay = document.querySelector('.overlay');
   const btnCloseModal = document.querySelector('.close_modal');
@@ -103,7 +162,7 @@ const caseList = (subject, email, message, time) => {
 
   btnCloseModal.addEventListener('click', closeModal);
   btnOpenModal.addEventListener('click', openModal);
-  overlay.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal); */
 };
 getCase();
 
