@@ -73,14 +73,22 @@ const getCase = () => {
 const caseList = (subject, email, message, time) => {
   containter.innerHTML =
     `<div class="user user_dark">
-        <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
-        <p class="user_subject">${subject}</p>
-        <p class="user_email">${email}</p>
-        <p class="user_message">${message}</p>
+    <div class="inline">
+      <ul>
+        <li class="green">Avslutad</li>
+        <li class="orange">Pågående</li>
+        <li class="red">Ej påbörjad</li>
+      </ul>
+      <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
+    </div>
+        
+    <p class="user_subject">${subject}</p>
+    <p class="user_email">${email}</p>
+    <p class="user_message">${message}</p>
     
         
-        <button class="show_modal">Add comment</button>
-        </div>
+    <button class="show_modal">Add comment</button>
+    </div>
         
         ` + containter.innerHTML;
 
@@ -89,12 +97,11 @@ const caseList = (subject, email, message, time) => {
   const overlay = document.querySelector('.overlay');
   const btnCloseModal = document.querySelector('.close_modal');
   const btnOpenModal = document.querySelector('.show_modal');
-  
+
   // Modal functions
   const openModal = function () {
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
-
   };
   const closeModal = function () {
     modal.classList.add('hidden');

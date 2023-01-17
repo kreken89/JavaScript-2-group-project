@@ -123,6 +123,57 @@ textarea:hover {
   background-color: #333;
 }
 
+/* Buttons list */
+
+.inline{
+  display: flex;
+  justify-content: space-between;
+}
+
+ul{
+  display: flex;
+  list-style: none;
+}
+
+li{
+  font-size: .5rem;
+  margin-right: 1rem;
+  padding: .2rem .3rem;
+  border: 1px solid white;
+  border-radius: .5rem;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+  font-size: .5rem;
+}
+
+/* Button style */
+
+.green:hover{
+  background-color: green;
+  border: none;
+  padding: .2rem .7rem;
+  transition: all .5s;
+  cursor: pointer;
+}
+.orange:hover{
+  background-color: orange;
+  border: none;
+  padding: .2rem .7rem;
+  transition: all .5s;
+  cursor: pointer;
+}
+.red:hover{
+  background-color: red;
+  border: none;
+  padding: .2rem .7rem;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+
 .time_add{
   display: flex;
   justify-content: flex-end;
