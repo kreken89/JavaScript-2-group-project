@@ -11,15 +11,16 @@ const getCase = () => {
       .then((data) => {
         console.log(data)
 
-        wrapper.innerHTML =
-        `
+        wrapper.innerHTML = `
             <div class="inline">
-                <ul>
-                <li class="green status">Avslutad</li>
-                <li class="orange status">Pågående</li>
-                <li class="red status">Ej påbörjad</li>
-                </ul>
-                <span class="time_add">${data.created.replace('T', ' ').substring(0, 16)}</span>
+                <div class="statusInfo">
+                 <button class="green status">Avslutad</button>
+                 <button class="orange status">Pågående</button>
+                 <button class="red status">Ej påbörjad</button>
+                </div>
+                <span class="time_add">${data.created
+                  .replace('T', ' ')
+                  .substring(0, 16)}</span>
             </div>
             <div class="card bg-secondary p-2 text-white">
                 <h2>${data.subject}</h2>
@@ -32,7 +33,7 @@ const getCase = () => {
             <div class="userInput">
             <textarea name="message" id="message_input" placeholder="New comment..."></textarea>
             <input type="submit" value="Add Comment" class="btn">
-            `
+            `;
 
             const commentList = document.createElement('ul')
             commentList.className = 'commentList'

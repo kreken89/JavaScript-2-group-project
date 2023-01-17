@@ -130,7 +130,7 @@ textarea:hover {
   justify-content: space-between;
 }
 
-ul{
+.statusInfo{
   display: flex;
   list-style: none;
 }

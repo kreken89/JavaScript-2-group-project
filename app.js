@@ -122,11 +122,11 @@ const caseList = (subject, email, message, time, id) => {
   containter.innerHTML =
     `<div class="user user_dark">
     <div class="inline">
-      <ul>
-        <li class="green status">Avslutad</li>
-        <li class="orange status">Pågående</li>
-        <li class="red status">Ej påbörjad</li>
-      </ul>
+      <div class="statusInfo">
+       <button class="green status">Avslutad</button>
+       <button class="orange status">Pågående</button>
+       <button class="red status">Ej påbörjad</button>
+      </div>
       <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
     </div>
         
