@@ -15,9 +15,9 @@ const getCase = () => {
         `
             <div class="inline">
                 <ul>
-                    <li class="green status">Avslutad</li>
-                    <li class="orange status">Pågående</li>
-                    <li class="red status">Ej påbörjad</li>
+                <li class="green status">Avslutad</li>
+                <li class="orange status">Pågående</li>
+                <li class="red status">Ej påbörjad</li>
                 </ul>
                 <span class="time_add">${data.created.replace('T', ' ').substring(0, 16)}</span>
             </div>

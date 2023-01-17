@@ -132,9 +132,9 @@ const caseList = (subject, email, message, time, id) => {
     `<div class="user user_dark">
     <div class="inline">
       <ul>
-        <li class="green">Avslutad</li>
-        <li class="orange">Pågående</li>
-        <li class="red">Ej påbörjad</li>
+        <li class="green status">Avslutad</li>
+        <li class="orange status">Pågående</li>
+        <li class="red status">Ej påbörjad</li>
       </ul>
       <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
     </div>
@@ -144,8 +144,8 @@ const caseList = (subject, email, message, time, id) => {
     <p class="user_message">${message}</p>
     
         
-        <a href="details.html?id=${id}"class="show_modal">Add comment</a>
-        </div>
+        <a href="details.html?id=${id}" class="show_modal">Add comment</a>
+    </div>
         
         ` + containter.innerHTML;
 
