@@ -54,21 +54,11 @@ const getCase = () => {
           let orangeStatus = document.querySelector('.orange');
           let redStatus = document.querySelector('.red');
 
-          if (e.target === greenStatus) {
-            orangeStatus.style.display = 'none';
-            redStatus.style.display = 'none';
-            greenStatus.style.backgroundColor = '#3aeb34';
-          } else if (e.target === orangeStatus) {
+          if (e.target === greenStatus || e.target === orangeStatus || e.target === redStatus) {
             orangeStatus.style.backgroundColor = '#bf912c';
-            redStatus.style.display = 'none';
-            greenStatus.style.display = 'none';
-          } else if (e.target === redStatus) {
-            orangeStatus.style.display = 'none';
             redStatus.style.backgroundColor = '#bf281d';
-            greenStatus.style.display = 'none';
-          } else {
-            return false;
-          }
+            greenStatus.style.backgroundColor = '#3aeb34';
+          } 
         });
       
     });

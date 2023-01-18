@@ -133,13 +133,14 @@ const caseList = (subject, email, message, time, id) => {
     <p class="user_subject">${subject}</p>
     <p class="user_email">${email}</p>
     <p class="user_message">${message}</p>
-    
+
+   
     <a href="details.html?id=${id}" class="show_modal">Add comment</a>
     </div>
     
     ` + containter.innerHTML;
-        
-    // <form action="details.html?id=${id}" >
+    
+    //  <form action="details.html?id=${id}" >
     //     <input type="submit" value="Add comment" />
     // </form>
 
