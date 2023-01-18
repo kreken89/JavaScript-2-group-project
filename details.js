@@ -4,7 +4,7 @@ const COMMENT_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments';
 const wrapper = document.querySelector('.container_details');
 const form = document.querySelector('.userInput')
 const inline = document.querySelector('.inline')
-
+const time_add = document.querySelector('.time_add')
 
 const comments = []
 let newComment = {}
@@ -32,30 +32,17 @@ const getCase = () => {
         console.log(data)
         email = data.email
         
-        const time_add = document.createElement('span')
-        time_add.className = 'time_add'
         time_add.innerText = data.created.replace('T', ' ').substring(0, 16)
-        inline.appendChild(time_add)
-        const card = document.createElement('div')
-        card.className = 'card'
-        wrapper.appendChild(card)
-        const subject = document.createElement('h2')
-        const _email = document.createElement('p')
-        const message = document.createElement('p')
+        
+        const card = document.querySelector('div')
+
+        const subject = card.querySelector('h2')
+        const _email = document.querySelector('.detailsEmail')
+        const message = document.querySelector('.detailsMessage')
         subject.innerText = data.subject
-        _email.className = 'p_details'
-        message.className = 'p_details'
         _email.innerText = data.email
         message.innerText = data.message
-        card.appendChild(subject)
-        card.appendChild(_email)
-        card.appendChild(message)
-        const commentsHeadline = document.createElement('h2')
-        commentsHeadline.innerText = 'Comments:'
-        wrapper.appendChild(commentsHeadline)
-       
-
-
+        
             data.comments.forEach(element => {
                 comments.push(element);
             });
@@ -66,10 +53,11 @@ const getCase = () => {
               });
             console.log(comments)
             
-            const commentList = document.createElement('ul')
-            commentList.className = 'commentList'
-            wrapper.appendChild(commentList)
+            const commentList = document.querySelector('#commentList')
+            
+            
             console.log(data.comments.length)
+            commentList.innerHTML = ''
             for(let i = 0; i<data.comments.length; i++){
                 const time = document.createElement('li')
                 time.className = 'comment'
@@ -98,10 +86,10 @@ const getCase = () => {
           'Content-Type': 'application/json-patch+json',
         },
       })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-      })
+      .then((res) => {
+        console.log(res)
+        getCase()
+        })
       .catch((err) => console.log(err));
   }
 
