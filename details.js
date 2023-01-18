@@ -3,6 +3,19 @@ const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases/';
 const COMMENT_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments/';
 const wrapper = document.querySelector('.container_details');
 const form = document.querySelector('.userInput')
+const caseStatus = document.querySelectorAll('button')
+let statusID = ''
+
+let newStatus = {}
+
+// caseStatus.addEventListener('click', (e) =>{
+//     e.preventDefault();
+
+//     newStatus = {
+//       id: id,
+//       statusId: e.target.id
+//     }
+// })
 
 
 let newComment = {}
@@ -27,13 +40,15 @@ const getCase = () => {
       .then((data) => {
         console.log(data)
         email = data.email
+        statusID = data.status.id
+        console.log(statusID);
         wrapper.innerHTML =
         `
             <div class="inline">
                 <div class="statusInfo">
-                 <button class="green status active">Avslutad</button>
-                 <button class="orange status active">Pågående</button>
-                 <button class="red status active">Ej påbörjad</button>
+                 <button id="3" class="green status">Avslutad</button>
+                 <button id="2" class="orange status">Pågående</button>
+                 <button id="1" class="red status">Ej påbörjad</button>
                 </div>
                 <span class="time_add">${data.created
                   .replace('T', ' ')
@@ -78,6 +93,22 @@ const getCase = () => {
       .then((res) => res.json())
       .then((data) => {
         
+      })
+      .catch((err) => console.log(err));
+  }
+
+  const putStatus = () => {
+    return fetch(CASE_URL + id, {
+      method: 'PUT',
+      body: JSON.stringify(newStatus),
+      headers: {
+        'Content-Type': 'application/json-patch+json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
       })
       .catch((err) => console.log(err));
   }
