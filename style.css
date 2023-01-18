@@ -29,7 +29,7 @@ html {
 }
 
 .card {
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   flex-direction: column;
   justify-content: flex-start;
 }

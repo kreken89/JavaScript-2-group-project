@@ -121,7 +121,7 @@ const caseList = (subject, email, message, time, id) => {
     card.appendChild(cardBtn)
     */
 
-  containter.innerHTML =
+  containter.insertAdjacentHTML =
     `
     <div class="user user_dark">
      <div class="inline">
@@ -141,7 +141,7 @@ const caseList = (subject, email, message, time, id) => {
     <a href="details.html?id=${id}" class="show_modal">Add comment</a>
     </div>
     
-    ` + containter.innerHTML;
+    ` + containter.insertAdjacentHTML;
 
   //  <form action="details.html?id=${id}" >
   //     <input type="submit" value="Add comment" />
