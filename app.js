@@ -12,9 +12,7 @@ const containter = document.querySelector('.case_container');
 
 const cases = [];
 let newPost = {};
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
+form.addEventListener('submit', () => {
   newPost = {
     email: email.value,
     subject: subject.value,
@@ -96,37 +94,13 @@ const caseList = (subject, email, message, time, id) => {
     cardBtn.className = 'show_modal'
     cardBtn.innerText = 'Add comment'
 
-    const modalWindow = document.createElement('div')
-    modalWindow.className = 'modal hidden'
-
-    const modalClose = document.createElement('button')
-    modalClose.className = 'close_modal'
-    modalClose.innerText = '&times;'
-
-    const modalSpan = document.createElement('span')
-    modalSpan.className = 'modal_span'
-    modalSpan.innerText = 'Add your comment'
-
-    const modalInput = document.createElement('textarea')
-    modalInput.id = 'message_input'
-    modalInput.placeholder = ' Insert your comment...'
-
-    const modalSubmit = document.createElement('button')
-    modalSubmit.className = 'close_modal_add_comment'
-    modalSubmit.innerText = 'Add comment'
-
     containter.appendChild(card)
     card.appendChild(cardTime)
     card.appendChild(cardSubject)
     card.appendChild(cardEmail)
     card.appendChild(cardMessage)
     card.appendChild(cardBtn)
-    
-    containter.appendChild(modalWindow)
-    modalWindow.appendChild(modalClose)
-    modalWindow.appendChild(modalSpan)
-    modalWindow.appendChild(modalInput)
-    modalWindow.appendChild(modalSubmit) */
+    */
     
   containter.innerHTML =
     `<div class="user user_dark">
