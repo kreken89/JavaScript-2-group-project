@@ -3,23 +3,7 @@ const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases/';
 const COMMENT_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments/';
 const wrapper = document.querySelector('.container_details');
 const form = document.querySelector('.userInput')
-<<<<<<< HEAD
 const inline = document.querySelector('.inline')
-=======
-const caseStatus = document.querySelectorAll('button')
-let statusID = ''
-
-let newStatus = {}
-
-// caseStatus.addEventListener('click', (e) =>{
-//     e.preventDefault();
-
-//     newStatus = {
-//       id: id,
-//       statusId: e.target.id
-//     }
-// })
->>>>>>> f833f8ac28254696690d8e05b99d2c425bc43185
 
 
 let newComment = {}
