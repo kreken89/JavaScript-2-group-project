@@ -12,9 +12,7 @@ const containter = document.querySelector('.case_container');
 
 const cases = [];
 let newPost = {};
-form.addEventListener('submit', (e) => {
-
-
+form.addEventListener('submit', () => {
   newPost = {
     email: email.value,
     subject: subject.value,
@@ -109,15 +107,13 @@ const caseList = (subject, email, message, time, id) => {
     cardBtn.className = 'show_modal'
     cardBtn.innerText = 'Add comment'
 
-    
-    containter.appendChild(inline)
-    inline.appendChild(card)
+    containter.appendChild(card)
     card.appendChild(cardTime)
     card.appendChild(cardSubject)
     card.appendChild(cardEmail)
     card.appendChild(cardMessage)
     card.appendChild(cardBtn)
-      */
+    */
     
   containter.innerHTML =
     `<div class="user user_dark">
