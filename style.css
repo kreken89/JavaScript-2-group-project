@@ -48,6 +48,7 @@ input {
   margin: 0.5rem;
   padding-left: 0.5rem;
   border: none;
+  accent-color: #333;
 }
 input:hover {
   height: 3em;
@@ -151,35 +152,6 @@ a{
 
 /* Button style */
 
-.green{
-  background-color: rgb(0, 128, 0); 
-  border: none;
-  padding: .2rem .7rem;
-  transition: all .5s;
-  cursor: pointer;
-}
-
-.orange{
-  background-color: orange;
-  border: none;
-  padding: .2rem .7rem;
-  transition: all .5s;
-  cursor: pointer;
-}
-.red input:checked + label{
-  background-color: red;
-  border: none;
-  padding: .2rem .7rem;
-  transition: all .5s;
-  cursor: pointer;
-}
-.grey{
-  background-color: grey;
-  border: none;
-  padding: .2rem .7rem;
-  transition: all .5s;
-  cursor: pointer;
-}
 
 /* Radio */
 
@@ -205,8 +177,16 @@ a{
 	cursor: pointer;
 }
 
-.statusInfo input:checked + label {
-	background-color: #2a6c04;
+.statusInfo input.red:checked + label {
+	background-color: red;
+	box-shadow: none;
+}
+.statusInfo input.orange:checked + label {
+	background-color: orange;
+	box-shadow: none;
+}
+.statusInfo input.green:checked + label {
+	background-color: green;
 	box-shadow: none;
 }
 

@@ -4,7 +4,7 @@ const COMMENT_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments/';
 const wrapper = document.querySelector('.container_details');
 const form = document.querySelector('.userInput')
 const inline = document.querySelector('.inline')
-const statusInfo = document.querySelector('.statusInfo')
+
 
 let newComment = {}
 form.addEventListener('submit', (e) => {
@@ -29,14 +29,29 @@ const getCase = () => {
       .then((data) => {
         console.log(data)
         email = data.email
-        
-        const inline = document.createElement('div')
-        inline.className = 'inline'
-        wrapper.appendChild(inline)
 
+        const statusInfo = document.querySelectorAll('input[name = "switch"]')
+        
+        
+        // statusInfo.addEventListener('checked', () => {
+        //   let status;
+
+        //   for(const statusInfo of radioButtons){
+        //     if(radioButton.checked){
+        //       select = radioButton.className.value
+        //       break
+        //     }
+        //   }
+        //   output.select.style.backgroundColor =
+        // })
+        // const inline = document.createElement('div')
+        // inline.className = 'inline'
+        // wrapper.appendChild(inline)
         /* const statusInfo = document.createElement('div')
         statusInfo.className = 'statusInfo'
         inline.appendChild(statusInfo)
+
+        
 
         const radioNotStarted = document.createElement('radio')
         radioNotStarted.className = 'red'
