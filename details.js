@@ -4,7 +4,7 @@ const COMMENT_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments/';
 const wrapper = document.querySelector('.container_details');
 const form = document.querySelector('.userInput')
 const inline = document.querySelector('.inline')
-
+// const statusInfo = document.querySelector('.statusInfo')
 
 let newComment = {}
 form.addEventListener('submit', (e) => {
@@ -28,30 +28,57 @@ const getCase = () => {
       .then((data) => {
         console.log(data)
         email = data.email
-        /*  */
-        /* const inline = document.createElement('div')
-        inline.className = 'inline'
-        wrapper.appendChild(inline) */
-
-        // const statusInfo = document.createElement('div')
-        // statusInfo.className = 'statusInfo'
-        // inline.appendChild(statusInfo)
         
-        /* const radio1 = document.createElement('radio')
-        const radio2 = document.createElement('radio')
-        const radio3 = document.createElement('radio')
-        radio1.className = 'red'
-        radio2.className = 'orange'
-        radio3.className = 'green'
-        radio1.id = '1'
-        radio2.id = '2'
-        radio3.id = '3'
-        radio1.innerText = 'Ej påbörjad'
-        radio2.innerText = 'Pågående'
-        radio3.innerText = 'Avslutad'
-        statusInfo.appendChild(radio1)
-        statusInfo.appendChild(radio2)
-        statusInfo.appendChild(radio3) */
+        const inline = document.createElement('div')
+        inline.className = 'inline'
+        wrapper.appendChild(inline)
+
+        const statusInfo = document.createElement('div')
+        statusInfo.className = 'statusInfo'
+        inline.appendChild(statusInfo)
+
+        const radioNotStarted = document.createElement('radio')
+        radioNotStarted.className = 'red'
+        radioNotStarted.id = '1'
+        radioNotStarted.innerText = 'Ej påbörjad';
+        radioNotStarted.style.backgroundColor = '#c22115'
+        statusInfo.appendChild(radioNotStarted)
+
+        const radioStarted = document.createElement('radio')
+        radioStarted.className = 'orange'
+        radioStarted.id = '2'
+        radioStarted.innerText = 'Pågående'
+        radioStarted.style.backgroundColor = '#c29715'
+        statusInfo.appendChild(radioStarted)
+
+        const radioCompleted = document.createElement('radio')
+        radioCompleted.className = 'green'
+        radioCompleted.id = '1'
+        radioCompleted.innerText = 'Ej påbörjad'
+        radioCompleted.style.backgroundColor = '#0d8217'
+        statusInfo.appendChild(radioCompleted)
+
+
+
+
+        
+        // const radio1 = document.createElement('radio')
+        // const radio2 = document.createElement('radio')
+        // const radio3 = document.createElement('radio')
+        // radio1.className = 'red'
+        // radio2.className = 'orange'
+        // radio3.className = 'green'
+        // radio1.id = '1'
+        // radio2.id = '2'
+        // radio3.id = '3'
+        // radio1.innerText = 'Ej påbörjad'
+        // radio2.innerText = 'Pågående'
+        // radio3.innerText = 'Avslutad'
+        // statusInfo.appendChild(radio1)
+        // statusInfo.appendChild(radio2)
+        // statusInfo.appendChild(radio3)
+
+
         const time_add = document.createElement('span')
         time_add.className = 'time_add'
         time_add.innerText = data.created.replace('T', ' ').substring(0, 16)
