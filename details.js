@@ -4,7 +4,7 @@ const COMMENT_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments';
 const wrapper = document.querySelector('.container_details');
 const form = document.querySelector('.userInput')
 const inline = document.querySelector('.inline')
-const statusInfo = document.querySelector('.statusInfo')
+
 
 const comments = []
 let newComment = {}
