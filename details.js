@@ -32,9 +32,11 @@ const getCase = () => {
         /* const inline = document.createElement('div')
         inline.className = 'inline'
         wrapper.appendChild(inline) */
-        const statusInfo = document.createElement('div')
-        statusInfo.className = 'statusInfo'
-        inline.appendChild(statusInfo)
+
+        // const statusInfo = document.createElement('div')
+        // statusInfo.className = 'statusInfo'
+        // inline.appendChild(statusInfo)
+        
         /* const radio1 = document.createElement('radio')
         const radio2 = document.createElement('radio')
         const radio3 = document.createElement('radio')
