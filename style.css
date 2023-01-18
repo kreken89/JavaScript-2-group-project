@@ -150,9 +150,6 @@ a{
   font-size: .5rem;
 }
 
-/* Button style */
-
-
 /* Radio */
 
 .statusInfo input {
@@ -168,7 +165,7 @@ a{
 	font-size: .7rem;
 	line-height: 1;
 	text-align: center;
-  padding: .2rem 1rem;
+  padding: .2rem .5rem;
   margin-right: 0.4rem;
 	transition: all 0.3s ease-in-out;
 }
