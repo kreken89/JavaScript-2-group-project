@@ -1,4 +1,4 @@
-const id = new URLSearchParams(window.location.search).get('id')
+const id = new URLSearchParams(window.location.search).get('id');
 const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases/';
 const COMMENT_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments/';
 const wrapper = document.querySelector('.container_details');
@@ -30,17 +30,19 @@ const getCase = () => {
         wrapper.innerHTML =
         `
             <div class="inline">
-                <ul>
-                    <li class="green status">Avslutad</li>
-                    <li class="orange status">Pågående</li>
-                    <li class="red status">Ej påbörjad</li>
-                </ul>
-                <span class="time_add">${data.created.replace('T', ' ').substring(0, 16)}</span>
+                <div class="statusInfo">
+                 <button class="green status active">Avslutad</button>
+                 <button class="orange status active">Pågående</button>
+                 <button class="red status active">Ej påbörjad</button>
+                </div>
+                <span class="time_add">${data.created
+                  .replace('T', ' ')
+                  .substring(0, 16)}</span>
             </div>
             <div class="card">
                 <h2>${data.subject}</h2>
-                <p>${data.email}</p>
-                <p>${data.message}</p>
+                <p class="p_details">${data.email}</p>
+                <p class="p_details">${data.message}</p>
                 <br>
                 
                 
