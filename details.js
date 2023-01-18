@@ -4,7 +4,7 @@ const COMMENT_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments/';
 const wrapper = document.querySelector('.container_details');
 const form = document.querySelector('.userInput')
 const inline = document.querySelector('.inline')
-// const statusInfo = document.querySelector('.statusInfo')
+const statusInfo = document.querySelector('.statusInfo')
 
 let newComment = {}
 form.addEventListener('submit', (e) => {
@@ -22,6 +22,7 @@ form.addEventListener('submit', (e) => {
 
 
 
+
 const getCase = () => {
     return fetch(CASE_URL + id)
       .then((res) => res.json())
@@ -33,7 +34,7 @@ const getCase = () => {
         inline.className = 'inline'
         wrapper.appendChild(inline)
 
-        const statusInfo = document.createElement('div')
+        /* const statusInfo = document.createElement('div')
         statusInfo.className = 'statusInfo'
         inline.appendChild(statusInfo)
 
@@ -56,7 +57,7 @@ const getCase = () => {
         radioCompleted.id = '1'
         radioCompleted.innerText = 'Ej påbörjad'
         radioCompleted.style.backgroundColor = '#0d8217'
-        statusInfo.appendChild(radioCompleted)
+        statusInfo.appendChild(radioCompleted) */
 
 
 

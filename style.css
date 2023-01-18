@@ -152,24 +152,29 @@ a{
 /* Button style */
 
 .green{
-  /* background-color: rgb(0, 128, 0); */
+  background-color: rgb(0, 128, 0); 
   border: none;
   padding: .2rem .7rem;
   transition: all .5s;
   cursor: pointer;
 }
-.green:{
-  background-color: rgb(0, 128, 0);
-}
+
 .orange{
-  /* background-color: orange; */
+  background-color: orange;
   border: none;
   padding: .2rem .7rem;
   transition: all .5s;
   cursor: pointer;
 }
-.red{
-  /* background-color: red; */
+.red input:checked + label{
+  background-color: red;
+  border: none;
+  padding: .2rem .7rem;
+  transition: all .5s;
+  cursor: pointer;
+}
+.grey{
+  background-color: grey;
   border: none;
   padding: .2rem .7rem;
   transition: all .5s;
