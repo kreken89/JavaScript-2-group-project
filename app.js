@@ -9,7 +9,6 @@ const message = document.querySelector('#message_input');
 const form = document.querySelector('#task_form');
 const containter = document.querySelector('.case_container');
 
-
 const cases = [];
 let newPost = {};
 form.addEventListener('submit', () => {
@@ -36,7 +35,13 @@ const postCase = () => {
     .then((data) => {
       cases.unshift({ ...newPost, id: data });
       console.log(cases);
-      caseList(newPost.subject, newPost.email, newPost.message, 'Just Now', newPost.id);
+      caseList(
+        newPost.subject,
+        newPost.email,
+        newPost.message,
+        'Just Now',
+        newPost.id
+      );
     })
     .catch((err) => console.log(err));
 };
@@ -114,17 +119,18 @@ const caseList = (subject, email, message, time, id) => {
     card.appendChild(cardMessage)
     card.appendChild(cardBtn)
     */
-    
+
   containter.innerHTML =
-    `<div class="user user_dark">
-    <div class="inline">
+    `
+    <div class="user user_dark">
+     <div class="inline">
       <div class="statusInfo">
-       <button class="green status">Avslutad</button>
+       <button id="3" class="green status">Avslutad</button>
        <button class="orange status">Pågående</button>
        <button class="red status">Ej påbörjad</button>
       </div>
       <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
-    </div>
+     </div>
         
     <p class="user_subject">${subject}</p>
     <p class="user_email">${email}</p>
@@ -135,13 +141,12 @@ const caseList = (subject, email, message, time, id) => {
     </div>
     
     ` + containter.innerHTML;
-    
-    //  <form action="details.html?id=${id}" >
-    //     <input type="submit" value="Add comment" />
-    // </form>
 
+  //  <form action="details.html?id=${id}" >
+  //     <input type="submit" value="Add comment" />
+  // </form>
 
- /*  // Comment Modal Add comment
+  /*  // Comment Modal Add comment
   const modal = document.querySelector('.modal');
   const overlay = document.querySelector('.overlay');
   const btnCloseModal = document.querySelector('.close_modal');
