@@ -127,12 +127,12 @@ const caseList = (subject, email, message, time, id) => {
      <div class="inline">
         <div class="statusInfo">
 
-          <input class="green" type="radio" id="3" name="switch" value="yes" />
-          <label for="3">Avslutad</label>
-          <input class="orange" type="radio" id="2" name="switch" value="maybe" />
-          <label for="2">Pågående</label>
-          <input class="red" type="radio" id="1" name="switch" value="no" checked />
-          <label for="1">Ej påbörjad</label>
+          <input class="green" type="radio" id="green_btn" name="switch" value="yes" />
+          <label for="green_btn">Avslutad</label>
+          <input class="orange" type="radio" id="orange_btn" name="switch" value="maybe" />
+          <label for="orange_btn">Pågående</label>
+          <input class="red" type="radio" id="red_btn" name="switch" value="no" checked />
+          <label for="red_btn">Ej påbörjad</label>
 
         </div>
          <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
