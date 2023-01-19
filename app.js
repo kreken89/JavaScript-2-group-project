@@ -50,7 +50,7 @@ const getCase = () => {
   return fetch(CASE_URL)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
+      console.log(data);
       data.forEach((element) => {
         cases.push(element);
       });
@@ -121,18 +121,23 @@ const caseList = (subject, email, message, time, id) => {
     card.appendChild(cardBtn)
     */
 
-  containter.insertAdjacentHTML =
+  containter.innerHTML =
     `
     <div class="user user_dark">
      <div class="inline">
-      <div class="statusInfo">
-       <button id="3" class="green status">Avslutad</button>
-       <button class="orange status">Pågående</button>
-       <button class="red status">Ej påbörjad</button>
+        <div class="statusInfo">
+
+          <input class="green" type="radio" id="3" name="switch" value="yes" />
+          <label for="3">Avslutad</label>
+          <input class="orange" type="radio" id="2" name="switch" value="maybe" />
+          <label for="2">Pågående</label>
+          <input class="red" type="radio" id="1" name="switch" value="no" checked />
+          <label for="1">Ej påbörjad</label>
+
+        </div>
+         <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
       </div>
-      <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
-     </div>
-        
+      
     <p class="user_subject">${subject}</p>
     <p class="user_email">${email}</p>
     <p class="user_message">${message}</p>
@@ -141,7 +146,7 @@ const caseList = (subject, email, message, time, id) => {
     <a href="details.html?id=${id}" class="show_modal">Add comment</a>
     </div>
     
-    ` + containter.insertAdjacentHTML;
+    ` + containter.innerHTML;
 
   //  <form action="details.html?id=${id}" >
   //     <input type="submit" value="Add comment" />
