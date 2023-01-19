@@ -18,11 +18,9 @@ form.addEventListener('submit', (e) => {
     };
   
     console.log(JSON.stringify(newComment));
-    postComment()
     
+    postComment()
   });
-
-
 
 
 const getCase = () => {

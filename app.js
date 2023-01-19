@@ -3,25 +3,102 @@
 
 //const BASE_URL = 'https://fnd22-shared.azurewebsites.net/swagger/index.html';
 const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases';
-const email = document.querySelector('#email_input');
-const subject = document.querySelector('#subject_input');
-const message = document.querySelector('#message_input');
+// const email = document.querySelector('#email_input');
+// const subject = document.querySelector('#subject_input');
+// const message = document.querySelector('#message_input');
 const form = document.querySelector('#task_form');
 const containter = document.querySelector('.case_container');
+const inline = document.querySelector('.inline');
+const time_add = document.querySelector('.time_add');
 
 const cases = [];
 let newPost = {};
+
 form.addEventListener('submit', () => {
   newPost = {
-    email: email.value,
-    subject: subject.value,
-    message: message.value,
+    // caseId: id,
+    // email: email.value,
+    // subject: subject.value,
+    // message: message.value,
+
+    email: document.querySelector('.user_email').value,
+    subject: document.querySelector('.user_subject').value,
+    message: document.querySelector('.user_message').value
   };
 
   console.log(JSON.stringify(newPost));
 
   postCase();
 });
+
+
+const getCase = () => {
+  return fetch(CASE_URL)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      // email = data.email
+
+      time_add.innerText = data.created.replace('T', ' ').substring(0, 16);
+
+      const user = document.querySelector('div');
+
+      const userSubject = user.querySelector('.user_subject');
+      const _email = document.querySelector('.user_email');
+      const message = document.querySelector('.user_message');
+      userSubject.innerText = data.subject;
+      _email.innerText = data.email;
+      message.innerText = data.message;
+
+      data.cases.forEach((element) => {
+        cases.push(element);
+      });
+      cases.sort(function (a, b) {
+        if (a.created < b.created) return -1;
+        if (a.created > b.created) return 1;
+        return 0;
+      });
+      console.log(cases);
+
+      const caseList = document.querySelector('#case_list');
+
+      // caseList.innerHTML = '';
+      console.log(data.cases.length);
+
+      
+      for (let i = 0; i < data.cases.length; i++) {
+        const time = document.createElement('span');
+        time.className = 'time_add';
+        time.innerText = cases[i].created.replace('T', ' ').substring(0, 16);
+        caseList.appendChild(time);
+
+        const email = document.createElement('p');
+        email.innerText = cases[i].email;
+        time.appendChild(email);
+
+        const userMessage = document.createElement('p');
+        userMessage.innerText = cases[i].message;
+        time.appendChild(userMessage);
+
+
+        
+        
+      }
+      cases.forEach((element) => {
+        caseList(
+          element.subject,
+          element.email,
+          element.message,
+          element.created,
+          element.id
+        );
+      });
+      /* for(let i = 0; i<5; i++){
+                caseList(data[i].subject, data[i].email, data[i].message)
+            } */
+      return cases;
+    });
+};
 
 const postCase = () => {
   return fetch(CASE_URL, {
@@ -44,36 +121,6 @@ const postCase = () => {
       );
     })
     .catch((err) => console.log(err));
-};
-
-const getCase = () => {
-  return fetch(CASE_URL)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data)
-      data.forEach((element) => {
-        cases.push(element);
-      });
-      cases.sort(function (a, b) {
-        if (a.created < b.created) return -1;
-        if (a.created > b.created) return 1;
-        return 0;
-      });
-      console.log(cases);
-      cases.forEach((element) => {
-        caseList(
-          element.subject,
-          element.email,
-          element.message,
-          element.created,
-          element.id
-        );
-      });
-      /* for(let i = 0; i<5; i++){
-                caseList(data[i].subject, data[i].email, data[i].message)
-            } */
-      return cases;
-    });
 };
 
 const caseList = (subject, email, message, time, id) => {
@@ -120,33 +167,26 @@ const caseList = (subject, email, message, time, id) => {
     card.appendChild(cardMessage)
     card.appendChild(cardBtn)
     */
-
-  containter.insertAdjacentHTML =
-    `
-    <div class="user user_dark">
-     <div class="inline">
-      <div class="statusInfo">
-       <button id="3" class="green status">Avslutad</button>
-       <button class="orange status">Pågående</button>
-       <button class="red status">Ej påbörjad</button>
-      </div>
-      <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
-     </div>
-        
-    <p class="user_subject">${subject}</p>
-    <p class="user_email">${email}</p>
-    <p class="user_message">${message}</p>
-
-   
-    <a href="details.html?id=${id}" class="show_modal">Add comment</a>
-    </div>
-    
-    ` + containter.insertAdjacentHTML;
-
+  // containter.insertAdjacentHTML =
+  //   `
+  //   <div class="user user_dark">
+  //    <div class="inline">
+  //     <div class="statusInfo">
+  //      <button id="3" class="green status">Avslutad</button>
+  //      <button class="orange status">Pågående</button>
+  //      <button class="red status">Ej påbörjad</button>
+  //     </div>
+  //     <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
+  //    </div>
+  //   <p class="user_subject">${subject}</p>
+  //   <p class="user_email">${email}</p>
+  //   <p class="user_message">${message}</p>
+  //   <a href="details.html?id=${id}" class="show_modal">Add comment</a>
+  //   </div>
+  //   ` + containter.insertAdjacentHTML;
   //  <form action="details.html?id=${id}" >
   //     <input type="submit" value="Add comment" />
   // </form>
-
   /*  // Comment Modal Add comment
   const modal = document.querySelector('.modal');
   const overlay = document.querySelector('.overlay');
