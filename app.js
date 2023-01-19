@@ -3,86 +3,39 @@
 
 //const BASE_URL = 'https://fnd22-shared.azurewebsites.net/swagger/index.html';
 const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases';
-// const email = document.querySelector('#email_input');
-// const subject = document.querySelector('#subject_input');
-// const message = document.querySelector('#message_input');
+const email = document.querySelector('#email_input');
+const subject = document.querySelector('#subject_input');
+const message = document.querySelector('#message_input');
 const form = document.querySelector('#task_form');
 const containter = document.querySelector('.case_container');
-const inline = document.querySelector('.inline');
-const time_add = document.querySelector('.time_add');
+// Filter
+const filter = document.querySelector('#filter');
+
 
 const cases = [];
 let newPost = {};
 
+// Load all event listeners
+loadEventListeners()
+
+function loadEventListeners(){
+
+// Filter tasks event
+filter.addEventListener('keyup', filterCases);
+}
+
+
 form.addEventListener('submit', () => {
   newPost = {
-    // caseId: id,
-    // email: email.value,
-    // subject: subject.value,
-    // message: message.value,
-
-    email: document.querySelector('.user_email').value,
-    subject: document.querySelector('.user_subject').value,
-    message: document.querySelector('.user_message').value
+    email: email.value,
+    subject: subject.value,
+    message: message.value,
   };
 
   console.log(JSON.stringify(newPost));
 
   postCase();
 });
-
-
-const getCase = () => {
-  return fetch(CASE_URL)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      data.forEach((element) => {
-        cases.push(element);
-      });
-      cases.sort(function (a, b) {
-        if (a.created < b.created) return -1;
-        if (a.created > b.created) return 1;
-        return 0;
-      });
-      // console.log(cases);
-
-      const caseList = document.querySelector('#case_list');
-
-      caseList.innerHTML = '';
-      console.log(data.cases.length);
-      
-      for (let i = 0; i < data.cases.length; i++) {
-        const time = document.createElement('span');
-        time.className = 'time_add';
-        time.innerText = cases[i].created.replace('T', ' ').substring(0, 16);
-        caseList.appendChild(time);
-        
-        const email = document.createElement('p');
-        email.innerText = cases[i].email;
-        time.appendChild(email);
-        
-        const userMessage = document.createElement('p');
-        userMessage.innerText = cases[i].message;
-        time.appendChild(userMessage);
-        
-      }
-      
-      cases.forEach((element) => {
-        caseList(
-          element.subject,
-          element.email,
-          element.message,
-          element.created,
-          element.id
-        );
-      });
-      /* for(let i = 0; i<5; i++){
-                caseList(data[i].subject, data[i].email, data[i].message)
-            } */
-      return cases;
-    });
-};
 
 const postCase = () => {
   return fetch(CASE_URL, {
@@ -107,7 +60,37 @@ const postCase = () => {
     .catch((err) => console.log(err));
 };
 
-const caseList = (subject, email, message, time, id) => {
+const getCase = () => {
+  return fetch(CASE_URL)
+    .then((res) => res.json())
+    .then((data) => {
+      // console.log(data);
+      data.forEach((element) => {
+        cases.push(element);
+      });
+      cases.sort(function (a, b) {
+        if (a.created < b.created) return -1;
+        if (a.created > b.created) return 1;
+        return 0;
+      });
+      console.log(cases);
+      cases.forEach((element) => {
+        caseList(
+          element.subject,
+          element.email,
+          element.message,
+          element.created,
+          element.id
+        );
+      });
+      /* for(let i = 0; i<5; i++){
+                caseList(data[i].subject, data[i].email, data[i].message)
+            } */
+      return cases;
+    });
+};
+
+const caseList = (subject, email, message, time, id, statusColor) => {
   /*  
   const card = document.createElement('div')
   card.className = 'user user_dark'
@@ -152,21 +135,27 @@ const caseList = (subject, email, message, time, id) => {
     card.appendChild(cardBtn)
     */
 
+  //  <input class="green" type="radio" id="green_btn" name="switch" value="yes" />
+  //  <label for="green_btn">Avslutad</label>
+  //  <input class="orange" type="radio" id="orange_btn" name="switch" value="maybe" />
+  //  <label for="orange_btn">Pågående</label>
+  //  <input class="red" type="radio" id="red_btn" name="switch" value="no" checked />
+  //  <label for="red_btn">Ej påbörjad</label>
+
   containter.innerHTML =
     `
     <div class="user user_dark">
      <div class="inline">
         <div class="statusInfo">
+        
+          <input type="radio" id="case_status" name="switch" value="yes"/>
+          <label for="green_btn">${statusColor}</label>
 
-          <input class="green" type="radio" id="green_btn" name="switch" value="yes" />
-          <label for="green_btn">Avslutad</label>
-          <input class="orange" type="radio" id="orange_btn" name="switch" value="maybe" />
-          <label for="orange_btn">Pågående</label>
-          <input class="red" type="radio" id="red_btn" name="switch" value="no" checked />
-          <label for="red_btn">Ej påbörjad</label>
 
         </div>
-         <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
+         <span class="time_add">${time
+           .replace('T', ' ')
+           .substring(0, 16)}</span>
       </div>
       
     <p class="user_subject">${subject}</p>
@@ -182,6 +171,7 @@ const caseList = (subject, email, message, time, id) => {
   //  <form action="details.html?id=${id}" >
   //     <input type="submit" value="Add comment" />
   // </form>
+
   /*  // Comment Modal Add comment
   const modal = document.querySelector('.modal');
   const overlay = document.querySelector('.overlay');
@@ -210,3 +200,17 @@ getCase();
 //     closeModal();
 //   }
 // });
+
+// Filter tasks function
+function filterCases(e) {
+  const text = e.target.value.toLowerCase();
+
+  document.querySelectorAll('.collection').forEach(function (cases) {
+    const item = cases.firstChild.textContent;
+    if (item.toLowercases().indexOf(text) != -1) {
+      cases.style.display = 'block';
+    } else {
+      cases.style.display = 'none';
+    }
+  });
+}
