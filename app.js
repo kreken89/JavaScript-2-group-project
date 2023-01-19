@@ -37,24 +37,7 @@ const getCase = () => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-<<<<<<< HEAD
-      // email = data.email
-
-      time_add.innerText = data.created.replace('T', ' ').substring(0, 16);
-
-      const user = document.querySelector('div');
-
-      const userSubject = user.querySelector('.user_subject');
-      const _email = document.querySelector('.user_email');
-      const message = document.querySelector('.user_message');
-      userSubject.innerText = data.subject;
-      _email.innerText = data.email;
-      message.innerText = data.message;
-
-      data.cases.forEach((element) => {
-=======
       data.forEach((element) => {
->>>>>>> c52565a830caa8850e35bb37fffd7536d27a4339
         cases.push(element);
       });
       cases.sort(function (a, b) {
@@ -171,25 +154,6 @@ const caseList = (subject, email, message, time, id) => {
     card.appendChild(cardMessage)
     card.appendChild(cardBtn)
     */
-<<<<<<< HEAD
-  // containter.insertAdjacentHTML =
-  //   `
-  //   <div class="user user_dark">
-  //    <div class="inline">
-  //     <div class="statusInfo">
-  //      <button id="3" class="green status">Avslutad</button>
-  //      <button class="orange status">Pågående</button>
-  //      <button class="red status">Ej påbörjad</button>
-  //     </div>
-  //     <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
-  //    </div>
-  //   <p class="user_subject">${subject}</p>
-  //   <p class="user_email">${email}</p>
-  //   <p class="user_message">${message}</p>
-  //   <a href="details.html?id=${id}" class="show_modal">Add comment</a>
-  //   </div>
-  //   ` + containter.insertAdjacentHTML;
-=======
 
   containter.innerHTML =
     `
@@ -218,7 +182,6 @@ const caseList = (subject, email, message, time, id) => {
     
     ` + containter.innerHTML;
 
->>>>>>> c52565a830caa8850e35bb37fffd7536d27a4339
   //  <form action="details.html?id=${id}" >
   //     <input type="submit" value="Add comment" />
   // </form>
