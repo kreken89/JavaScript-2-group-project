@@ -45,32 +45,29 @@ const getCase = () => {
         if (a.created > b.created) return 1;
         return 0;
       });
-      console.log(cases);
+      // console.log(cases);
 
       const caseList = document.querySelector('#case_list');
 
-      // caseList.innerHTML = '';
+      caseList.innerHTML = '';
       console.log(data.cases.length);
-
       
       for (let i = 0; i < data.cases.length; i++) {
         const time = document.createElement('span');
         time.className = 'time_add';
         time.innerText = cases[i].created.replace('T', ' ').substring(0, 16);
         caseList.appendChild(time);
-
+        
         const email = document.createElement('p');
         email.innerText = cases[i].email;
         time.appendChild(email);
-
+        
         const userMessage = document.createElement('p');
         userMessage.innerText = cases[i].message;
         time.appendChild(userMessage);
-
-
-        
         
       }
+      
       cases.forEach((element) => {
         caseList(
           element.subject,
