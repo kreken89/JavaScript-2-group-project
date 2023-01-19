@@ -8,6 +8,7 @@ const time_add = document.querySelector('.time_add')
 
 const comments = []
 let newComment = {}
+let newStatus = {}
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -18,8 +19,8 @@ form.addEventListener('submit', (e) => {
     };
   
     console.log(JSON.stringify(newComment));
-    postComment()
     
+    postComment()
   });
 
 
@@ -100,14 +101,25 @@ const getCase = () => {
       headers: {
         'Content-Type': 'application/json-patch+json',
       },
+      status: {
+        id: '',
+        statusId: '',
+      },
+      // headers: {
+      //   'Content-Type': 'application/json-patch+json',
+      // },
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-
+      .then((res) => {
+        console.log(res);
+        getCase();
       })
       .catch((err) => console.log(err));
-  }
+      // .then((res) => res.json())
+      // .then((data) => {
+      //   console.log(data);
+      // })
+      // .catch((err) => console.log(err));
+    }
 
   getCase()
 
