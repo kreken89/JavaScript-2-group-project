@@ -37,6 +37,7 @@ const getCase = () => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+<<<<<<< HEAD
       // email = data.email
 
       time_add.innerText = data.created.replace('T', ' ').substring(0, 16);
@@ -51,6 +52,9 @@ const getCase = () => {
       message.innerText = data.message;
 
       data.cases.forEach((element) => {
+=======
+      data.forEach((element) => {
+>>>>>>> c52565a830caa8850e35bb37fffd7536d27a4339
         cases.push(element);
       });
       cases.sort(function (a, b) {
@@ -167,6 +171,7 @@ const caseList = (subject, email, message, time, id) => {
     card.appendChild(cardMessage)
     card.appendChild(cardBtn)
     */
+<<<<<<< HEAD
   // containter.insertAdjacentHTML =
   //   `
   //   <div class="user user_dark">
@@ -184,6 +189,36 @@ const caseList = (subject, email, message, time, id) => {
   //   <a href="details.html?id=${id}" class="show_modal">Add comment</a>
   //   </div>
   //   ` + containter.insertAdjacentHTML;
+=======
+
+  containter.innerHTML =
+    `
+    <div class="user user_dark">
+     <div class="inline">
+        <div class="statusInfo">
+
+          <input class="green" type="radio" id="green_btn" name="switch" value="yes" />
+          <label for="green_btn">Avslutad</label>
+          <input class="orange" type="radio" id="orange_btn" name="switch" value="maybe" />
+          <label for="orange_btn">Pågående</label>
+          <input class="red" type="radio" id="red_btn" name="switch" value="no" checked />
+          <label for="red_btn">Ej påbörjad</label>
+
+        </div>
+         <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
+      </div>
+      
+    <p class="user_subject">${subject}</p>
+    <p class="user_email">${email}</p>
+    <p class="user_message">${message}</p>
+
+   
+    <a href="details.html?id=${id}" class="show_modal">Add comment</a>
+    </div>
+    
+    ` + containter.innerHTML;
+
+>>>>>>> c52565a830caa8850e35bb37fffd7536d27a4339
   //  <form action="details.html?id=${id}" >
   //     <input type="submit" value="Add comment" />
   // </form>
