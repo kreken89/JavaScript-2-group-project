@@ -1,5 +1,3 @@
-
-
 const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases';
 const email = document.querySelector('#email_input');
 const subject = document.querySelector('#subject_input');
@@ -30,8 +28,9 @@ form.addEventListener('submit', (e) => {
       'Email is required and must be in the correct format.'
     );
   } else if (
-    subject.value.trim() === '' ||
-    !/^[a-zA-Z]*$/.test(subject.value)
+    subject.value.trim() === '' 
+    // ||
+    // !/^[a-zA-Z]*$/.test(subject.value)
   ) {
     subject.setCustomValidity(
       'Subject is required and must be in letters format.'
