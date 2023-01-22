@@ -8,23 +8,9 @@ const subject = document.querySelector('#subject_input');
 const message = document.querySelector('#message_input');
 const form = document.querySelector('#task_form');
 const containter = document.querySelector('.case_container');
-// Filter
-const filter = document.querySelector('#filter');
-
 
 const cases = [];
 let newPost = {};
-
-// Load all event listeners
-loadEventListeners()
-
-function loadEventListeners(){
-
-// Filter tasks event
-filter.addEventListener('keyup', filterCases);
-}
-
-
 form.addEventListener('submit', () => {
   newPost = {
     email: email.value,
@@ -64,7 +50,7 @@ const getCase = () => {
   return fetch(CASE_URL)
     .then((res) => res.json())
     .then((data) => {
-      // console.log(data);
+      console.log(data);
       data.forEach((element) => {
         cases.push(element);
       });
@@ -90,7 +76,7 @@ const getCase = () => {
     });
 };
 
-const caseList = (subject, email, message, time, id, statusColor) => {
+const caseList = (subject, email, message, time, id) => {
   /*  
   const card = document.createElement('div')
   card.className = 'user user_dark'
@@ -135,29 +121,18 @@ const caseList = (subject, email, message, time, id, statusColor) => {
     card.appendChild(cardBtn)
     */
 
-  //  <input class="green" type="radio" id="green_btn" name="switch" value="yes" />
-  //  <label for="green_btn">Avslutad</label>
-  //  <input class="orange" type="radio" id="orange_btn" name="switch" value="maybe" />
-  //  <label for="orange_btn">Pågående</label>
-  //  <input class="red" type="radio" id="red_btn" name="switch" value="no" checked />
-  //  <label for="red_btn">Ej påbörjad</label>
-
   containter.innerHTML =
     `
     <div class="user user_dark">
      <div class="inline">
-        <div class="statusInfo">
-        
-          <input type="radio" id="case_status" name="switch" value="yes"/>
-          <label for="green_btn">${statusColor}</label>
-
-
-        </div>
-         <span class="time_add">${time
-           .replace('T', ' ')
-           .substring(0, 16)}</span>
+      <div class="statusInfo">
+       <button id="3" class="green status">Avslutad</button>
+       <button class="orange status">Pågående</button>
+       <button class="red status">Ej påbörjad</button>
       </div>
-      
+      <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
+     </div>
+        
     <p class="user_subject">${subject}</p>
     <p class="user_email">${email}</p>
     <p class="user_message">${message}</p>
@@ -200,17 +175,3 @@ getCase();
 //     closeModal();
 //   }
 // });
-
-// Filter tasks function
-function filterCases(e) {
-  const text = e.target.value.toLowerCase();
-
-  document.querySelectorAll('.collection').forEach(function (cases) {
-    const item = cases.firstChild.textContent;
-    if (item.toLowercases().indexOf(text) != -1) {
-      cases.style.display = 'block';
-    } else {
-      cases.style.display = 'none';
-    }
-  });
-}

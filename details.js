@@ -8,7 +8,6 @@ const time_add = document.querySelector('.time_add');
 
 const comments = [];
 let newComment = {};
-let newStatus = {};
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -19,7 +18,6 @@ form.addEventListener('submit', (e) => {
   };
 
   console.log(JSON.stringify(newComment));
-
   postComment();
 });
 
@@ -27,7 +25,7 @@ const getCase = () => {
   return fetch(CASE_URL + id)
     .then((res) => res.json())
     .then((data) => {
-      // console.log(data)
+      console.log(data);
       email = data.email;
 
       time_add.innerText = data.created.replace('T', ' ').substring(0, 16);
@@ -35,22 +33,11 @@ const getCase = () => {
       const card = document.querySelector('div');
 
       const subject = card.querySelector('h2');
-      subject.innerText = data.subject;
-
       const _email = document.querySelector('.detailsEmail');
-      _email.innerText = data.email;
-
       const message = document.querySelector('.detailsMessage');
+      subject.innerText = data.subject;
+      _email.innerText = data.email;
       message.innerText = data.message;
-
-      // const caseStatusGreen = document.querySelector('.green');
-      // caseStatusGreen.innerText = data.caseStatusGreen;
-
-      // const caseStatusOrange = document.querySelector('.orange');
-      // caseStatusOrange.innerText = data.caseStatusOrange;
-
-      // const caseStatusRed = document.querySelector('.red');
-      // caseStatusRed.innerText = data.caseStatusRed;
 
       data.comments.forEach((element) => {
         comments.push(element);
@@ -60,11 +47,11 @@ const getCase = () => {
         if (a.created < b.created) return 1;
         return 0;
       });
-      // console.log(comments)
+      console.log(comments);
 
       const commentList = document.querySelector('#commentList');
 
-      // console.log(data.comments.length)
+      console.log(data.comments.length);
       commentList.innerHTML = '';
       for (let i = 0; i < data.comments.length; i++) {
         const time = document.createElement('li');
@@ -105,23 +92,14 @@ const putStatus = () => {
     method: 'PUT',
     body: JSON.stringify(newStatus),
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json-patch+json',
     },
   })
-  .then((res) => {
-    console.log(res);
-    getCase();
-  })
-  .catch((err) => console.log(err));
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => console.log(err));
 };
+
 getCase();
-
-// headers: {
-//   'Content-Type': 'application/json-patch+json',
-// },
-
-// .then((res) => res.json())
-// .then((data) => {
-// console.log(data);
-// })
-// .catch((err) => console.log(err));
