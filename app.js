@@ -141,42 +141,6 @@ const caseList = (subject, email, message, time, id, statusId) => {
             Ej påbörjad
           </span>
 
-          ${
-            "" /*
-        
-        <input 
-            class="green"
-            type="checkbox"
-            id="${id + "green_btn"}"
-            name="switch" 
-            value="yes"
-            ${statusId === 3 ? "checked" : null}
-           />
-          <label for="${id + "green_btn"}">Avslutad</label>
-          <input 
-          class="orange" 
-          type="checkbox" 
-          id="${id + "orange_btn"}" 
-          name="switch" 
-          value="maybe"
-          ${statusId === 2 ? "checked" : null} 
-          />
-          <label for="${id + "orange_btn"}">Pågående</label>
-          <input 
-            class="red" 
-            type="checkbox" 
-            id="${id + "red_btn"}" 
-            name="switch" 
-            value="no" 
-            ${statusId === 1 ? "checked" : null}
-          />
-          <label for="${id + "red_btn"}">Ej påbörjad</label>
-        
-        */
-          }
-          
-          
-
         </div>
          <span class="time_add">${time
            .replace("T", " ")
@@ -225,3 +189,36 @@ getCase();
 //     closeModal();
 //   }
 // });
+
+
+/*
+        
+        <input 
+            class="green"
+            type="checkbox"
+            id="${id + "green_btn"}"
+            name="switch" 
+            value="yes"
+            ${statusId === 3 ? "checked" : null}
+           />
+          <label for="${id + "green_btn"}">Avslutad</label>
+          <input 
+          class="orange" 
+          type="checkbox" 
+          id="${id + "orange_btn"}" 
+          name="switch" 
+          value="maybe"
+          ${statusId === 2 ? "checked" : null} 
+          />
+          <label for="${id + "orange_btn"}">Pågående</label>
+          <input 
+            class="red" 
+            type="checkbox" 
+            id="${id + "red_btn"}" 
+            name="switch" 
+            value="no" 
+            ${statusId === 1 ? "checked" : null}
+          />
+          <label for="${id + "red_btn"}">Ej påbörjad</label>
+        
+        */
