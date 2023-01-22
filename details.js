@@ -1,44 +1,44 @@
-const id = new URLSearchParams(window.location.search).get("id");
-const CASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases/";
-const COMMENT_URL = "https://fnd22-shared.azurewebsites.net/api/Comments";
-const wrapper = document.querySelector(".container_details");
-const form = document.querySelector(".userInput");
-const inline = document.querySelector(".inline");
-const time_add = document.querySelector(".time_add");
-const finished = document.querySelector("#green_btn");
-const ongoing = document.querySelector("#orange_btn");
-const notStarted = document.querySelector("#red_btn");
+const id = new URLSearchParams(window.location.search).get('id');
+const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases/';
+const COMMENT_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments';
+const wrapper = document.querySelector('.container_details');
+const form = document.querySelector('.userInput');
+const inline = document.querySelector('.inline');
+const time_add = document.querySelector('.time_add');
+const finished = document.querySelector('#green_btn');
+const ongoing = document.querySelector('#orange_btn');
+const notStarted = document.querySelector('#red_btn');
 
 const comments = [];
 let newComment = {};
 let newStatus = {};
 let caseId = null;
 
-finished.addEventListener("click", (e) => {
+finished.addEventListener('click', (e) => {
   if (caseId) {
     putStatus(caseId, 3);
   }
   // Put function ta emot(id, 3);
 });
 
-ongoing.addEventListener("click", (e) => {
+ongoing.addEventListener('click', (e) => {
   if (caseId) {
     putStatus(caseId, 2);
   }
 });
 
-notStarted.addEventListener("click", (e) => {
+notStarted.addEventListener('click', (e) => {
   if (caseId) {
     putStatus(caseId, 1);
   }
 });
 
-form.addEventListener("submit", (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   newComment = {
     caseId: id,
-    email: document.querySelector(".emailInput").value,
-    message: document.querySelector(".messageInput").value,
+    email: document.querySelector('.emailInput').value,
+    message: document.querySelector('.messageInput').value,
   };
 
   console.log(JSON.stringify(newComment));
@@ -48,7 +48,6 @@ form.addEventListener("submit", (e) => {
 
 // set case status with switch based on status id
 const setStatus = (statusId) => {
-
   switch (statusId) {
     case 1:
       notStarted.checked = true;
@@ -79,13 +78,13 @@ const getCase = () => {
         setStatus(data.status.id);
       }
 
-      time_add.innerText = data.created.replace("T", " ").substring(0, 16);
+      time_add.innerText = data.created.replace('T', ' ').substring(0, 16);
 
-      const card = document.querySelector("div");
+      const card = document.querySelector('div');
 
-      const subject = card.querySelector("h2");
-      const _email = document.querySelector(".detailsEmail");
-      const message = document.querySelector(".detailsMessage");
+      const subject = card.querySelector('h2');
+      const _email = document.querySelector('.detailsEmail');
+      const message = document.querySelector('.detailsMessage');
       subject.innerText = data.subject;
       _email.innerText = data.email;
       message.innerText = data.message;
@@ -100,21 +99,21 @@ const getCase = () => {
       });
       console.log(comments);
 
-      const commentList = document.querySelector("#commentList");
+      const commentList = document.querySelector('#commentList');
 
       console.log(data.comments.length);
-      commentList.innerHTML = "";
+      commentList.innerHTML = '';
       for (let i = 0; i < data.comments.length; i++) {
-        const time = document.createElement("li");
-        time.className = "comment";
-        time.innerText = comments[i].created.replace("T", " ").substring(0, 16);
+        const time = document.createElement('li');
+        time.className = 'comment';
+        time.innerText = comments[i].created.replace('T', ' ').substring(0, 16);
         commentList.appendChild(time);
 
-        const email = document.createElement("p");
+        const email = document.createElement('p');
         email.innerText = comments[i].email;
         time.appendChild(email);
 
-        const comment = document.createElement("p");
+        const comment = document.createElement('p');
         comment.innerText = comments[i].message;
         time.appendChild(comment);
       }
@@ -125,10 +124,10 @@ const getCase = () => {
 
 const postComment = () => {
   return fetch(COMMENT_URL, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(newComment),
     headers: {
-      "Content-Type": "application/json-patch+json",
+      'Content-Type': 'application/json-patch+json',
     },
   })
     .then((res) => {
@@ -140,28 +139,20 @@ const postComment = () => {
 
 const putStatus = (id, statusId) => {
   return fetch(CASE_URL + id, {
-    method: "PUT",
+    method: 'PUT',
     body: JSON.stringify({
       id: id,
       statusId: statusId,
     }),
     headers: {
-      "Content-Type": "application/json-patch+json",
+      'Content-Type': 'application/json-patch+json',
     },
-    // headers: {
-    //   'Content-Type': 'application/json-patch+json',
-    // },
   })
     .then((res) => {
       console.log(res);
       getCase();
     })
     .catch((err) => console.log(err));
-  // .then((res) => res.json())
-  // .then((data) => {
-  //   console.log(data);
-  // })
-  // .catch((err) => console.log(err));
 };
 
 getCase();
