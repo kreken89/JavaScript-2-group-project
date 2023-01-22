@@ -2,16 +2,16 @@
 // https://fnd22-shared.azurewebsites.net/swagger/index.html
 
 //const BASE_URL = 'https://fnd22-shared.azurewebsites.net/swagger/index.html';
-const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases';
-const email = document.querySelector('#email_input');
-const subject = document.querySelector('#subject_input');
-const message = document.querySelector('#message_input');
-const form = document.querySelector('#task_form');
-const containter = document.querySelector('.case_container');
+const CASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases";
+const email = document.querySelector("#email_input");
+const subject = document.querySelector("#subject_input");
+const message = document.querySelector("#message_input");
+const form = document.querySelector("#task_form");
+const containter = document.querySelector(".case_container");
 
 const cases = [];
 let newPost = {};
-form.addEventListener('submit', () => {
+form.addEventListener("submit", () => {
   newPost = {
     email: email.value,
     subject: subject.value,
@@ -25,10 +25,10 @@ form.addEventListener('submit', () => {
 
 const postCase = () => {
   return fetch(CASE_URL, {
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify(newPost),
     headers: {
-      'Content-Type': 'application/json-patch+json',
+      "Content-Type": "application/json-patch+json",
     },
   })
     .then((res) => res.json())
@@ -39,7 +39,7 @@ const postCase = () => {
         newPost.subject,
         newPost.email,
         newPost.message,
-        'Just Now',
+        "Just Now",
         newPost.id
       );
     })
@@ -66,7 +66,8 @@ const getCase = () => {
           element.email,
           element.message,
           element.created,
-          element.id
+          element.id,
+          element.status.id
         );
       });
       /* for(let i = 0; i<5; i++){
@@ -76,7 +77,7 @@ const getCase = () => {
     });
 };
 
-const caseList = (subject, email, message, time, id) => {
+const caseList = (subject, email, message, time, id, statusId) => {
   /*  
   const card = document.createElement('div')
   card.className = 'user user_dark'
@@ -125,10 +126,32 @@ const caseList = (subject, email, message, time, id) => {
     `
     <div class="user user_dark">
      <div class="inline">
+<<<<<<< HEAD
       <div class="statusInfo">
        <button id="3" class="green status">Avslutad</button>
        <button class="orange status">Pågående</button>
        <button class="red status">Ej påbörjad</button>
+=======
+        <div class="statusInfo">
+
+          <span class="${statusId === 3 ? "green" : "inherit"}">
+            Avslutad
+          </span>
+
+
+          <span class="${statusId === 2 ? "orange" : "inherit"}">
+            Pågående
+          </span>
+
+          <span class="${statusId === 1 ? "red" : "inherit"}">
+            Ej påbörjad
+          </span>
+
+        </div>
+         <span class="time_add">${time
+           .replace("T", " ")
+           .substring(0, 16)}</span>
+>>>>>>> 6da8609972552eea9a7fdb0bb8454c63c24e52f1
       </div>
       <span class="time_add">${time.replace('T', ' ').substring(0, 16)}</span>
      </div>
@@ -175,3 +198,36 @@ getCase();
 //     closeModal();
 //   }
 // });
+
+
+/*
+        
+        <input 
+            class="green"
+            type="checkbox"
+            id="${id + "green_btn"}"
+            name="switch" 
+            value="yes"
+            ${statusId === 3 ? "checked" : null}
+           />
+          <label for="${id + "green_btn"}">Avslutad</label>
+          <input 
+          class="orange" 
+          type="checkbox" 
+          id="${id + "orange_btn"}" 
+          name="switch" 
+          value="maybe"
+          ${statusId === 2 ? "checked" : null} 
+          />
+          <label for="${id + "orange_btn"}">Pågående</label>
+          <input 
+            class="red" 
+            type="checkbox" 
+            id="${id + "red_btn"}" 
+            name="switch" 
+            value="no" 
+            ${statusId === 1 ? "checked" : null}
+          />
+          <label for="${id + "red_btn"}">Ej påbörjad</label>
+        
+        */

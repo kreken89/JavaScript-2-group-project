@@ -55,6 +55,7 @@ input {
   border: none;
   accent-color: #333;
 }
+
 input:hover {
   height: 3em;
   border-bottom: 1px solid #888;
@@ -64,6 +65,62 @@ input:hover {
 input#subject_input{
   margin-top: 0.5rem;
 }
+/*Span status*/
+span.status {
+    width: 100%;
+      height: 3em;
+      padding-left: 0.5rem;
+      border: none;
+      accent-color: #333;
+  }
+
+  .statusInfo span .status {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    border: none;
+    overflow: hidden;
+  }
+
+
+  .statusInfo span{
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .green {
+    background-color: green;
+    font-size: .7rem;
+    line-height: 1;
+    text-align: center;
+    padding: .2rem .5rem;
+    margin-right: 0.4rem;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+  }
+
+  .orange {
+  background-color: orange;
+	font-size: .7rem;
+	line-height: 1;
+	text-align: center;
+  padding: .2rem .5rem;
+  margin-right: 0.4rem;
+	transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  }
+
+  .red {
+  background-color: red;
+	font-size: .7rem;
+	line-height: 1;
+	text-align: center;
+  padding: .2rem .5rem;
+  margin-right: 0.4rem;
+	transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  }
 
 /* Submit button */
 input.btn {
@@ -156,7 +213,10 @@ textarea:hover {
 a{
   text-decoration: none;
   color: white;
-  font-size: .5rem;
+  font-size: 1rem;
+  padding: 0.5rem 5rem;
+  background-color: #888;
+  border-radius: 0.7rem;
 }
 
 /* Radio */
