@@ -125,17 +125,10 @@ const getCase = () => {
 
 const postComment = () => {
   return fetch(COMMENT_URL, {
-<<<<<<< HEAD
-    method: 'POST',
-    body: JSON.stringify(newComment),
-    headers: {
-      'Content-Type': 'application/json-patch+json',
-=======
     method: "POST",
     body: JSON.stringify(newComment),
     headers: {
       "Content-Type": "application/json-patch+json",
->>>>>>> 6da8609972552eea9a7fdb0bb8454c63c24e52f1
     },
   })
     .then((res) => {
@@ -145,21 +138,6 @@ const postComment = () => {
     .catch((err) => console.log(err));
 };
 
-<<<<<<< HEAD
-const putStatus = () => {
-  return fetch(CASE_URL + id, {
-    method: 'PUT',
-    body: JSON.stringify(newStatus),
-    headers: {
-      'Content-Type': 'application/json-patch+json',
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => console.log(err));
-=======
 const putStatus = (id, statusId) => {
   return fetch(CASE_URL + id, {
     method: "PUT",
@@ -184,7 +162,6 @@ const putStatus = (id, statusId) => {
   //   console.log(data);
   // })
   // .catch((err) => console.log(err));
->>>>>>> 6da8609972552eea9a7fdb0bb8454c63c24e52f1
 };
 
 getCase();
