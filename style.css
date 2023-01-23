@@ -36,6 +36,9 @@ html {
 
 .comment{
   font-size: 1.5rem;
+  line-height: 1.5;
+  max-height: 4.5em; /* 3 lines x 1.5 line-height */
+  overflow: hidden;
 }
 
 
@@ -284,9 +287,14 @@ a{
   font-size: 1.3rem;
 }
 
-.user_message{
+.user_message {
   font-size: 1em;
   padding: 1rem .5rem 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .submit_btn{
@@ -347,7 +355,6 @@ h3{
 #message_input{
   height: 9em;
 }
-
 
 .header_details{
   display: flex;

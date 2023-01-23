@@ -140,6 +140,9 @@ const caseList = (subject, email, message, time, id, statusId) => {
   messageEl.classList.add('user_message');
   messageEl.textContent = message;
 
+  const limitedMessage = message.slice(0, 30) + '...';
+  messageEl.textContent = limitedMessage;
+
   // Create the "Add comment" link
   const addCommentLink = document.createElement('a');
   addCommentLink.href = `details.html?id=${id}`;
