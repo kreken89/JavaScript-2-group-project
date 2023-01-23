@@ -152,7 +152,7 @@ const caseList = (subject, email, message, time, id, statusId) => {
     <p class="user_message">${message}</p>
 
    
-    <a href="details.html?id=${id}" class="show_modal">Add comment</a>
+      <input class="show_modal" type="submit" value="Add comment" onclick="location.href='details.html?id=${id}'">
     </div>
     
     ` + containter.innerHTML;
