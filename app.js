@@ -140,7 +140,7 @@ const caseList = (subject, email, message, time, id, statusId) => {
   messageEl.classList.add('user_message');
   messageEl.textContent = message;
 
-  const limitedMessage = message.slice(0, 30) + '...';
+  const limitedMessage = message.slice(0, 50) + '...';
   messageEl.textContent = limitedMessage;
 
   // Create the "Add comment" link

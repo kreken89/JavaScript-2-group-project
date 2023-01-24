@@ -34,14 +34,16 @@ notStarted.addEventListener('click', (e) => {
 });
 
 form.addEventListener('submit', (e) => {
-  e.preventDefault();
   newComment = {
     caseId: id,
     email: document.querySelector('.emailInput').value,
     message: document.querySelector('.messageInput').value,
   };
-
+  
   console.log(JSON.stringify(newComment));
+  document.querySelector('.emailInput').value = ''
+  document.querySelector('.messageInput').value = ''
+  e.preventDefault();
 
   postComment();
 });
