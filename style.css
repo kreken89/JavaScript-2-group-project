@@ -42,7 +42,6 @@ html {
 }
 
 
-
 .card_title {
   font-size: 2rem;
 }
@@ -385,6 +384,16 @@ h3{
   flex-direction: column;
   margin-top: 2rem;
   gap: 1rem;
+}
+
+/* .comment {
+  max-height: 4.5em; 
+  overflow: hidden;
+} */
+
+.comment p{
+  overflow: visible;
+  max-height: 4.5em;
 }
 
 li.comment{

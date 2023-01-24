@@ -104,18 +104,20 @@ const getCase = () => {
       console.log(data.comments.length);
       commentList.innerHTML = '';
       for (let i = 0; i < data.comments.length; i++) {
-        const time = document.createElement('li');
-        time.className = 'comment';
-        time.innerText = comments[i].created.replace('T', ' ').substring(0, 16);
-        commentList.appendChild(time);
+        const time_add = document.createElement('span');
+        time_add.innerText = data.comments[i].created
+          .replace('T', ' ')
+          .substring(0, 16);
+        commentList.appendChild(time_add);
 
-        const email = document.createElement('p');
+        const email = document.createElement('span');
         email.innerText = comments[i].email;
-        time.appendChild(email);
+        commentList.appendChild(email);
 
-        const comment = document.createElement('p');
+        const comment = document.createElement('textarea');
         comment.innerText = comments[i].message;
-        time.appendChild(comment);
+        comment.readOnly = true;
+        commentList.appendChild(comment);
       }
 
       return data;
