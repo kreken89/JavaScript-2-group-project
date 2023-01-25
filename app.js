@@ -1,15 +1,16 @@
 // API key
 
-const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases';
+const CASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases/';
 const email = document.querySelector('#email_input');
 const subject = document.querySelector('#subject_input');
 const message = document.querySelector('#message_input');
 const form = document.querySelector('#task_form');
-const containter = document.querySelector('.case_container');
+const container = document.querySelector('.case_container');
 
 const cases = [];
 let newPost = {};
-form.addEventListener('submit', () => {
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
   newPost = {
     email: email.value,
     subject: subject.value,
@@ -29,21 +30,47 @@ const postCase = () => {
       'Content-Type': 'application/json-patch+json',
     },
   })
-    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      return res.json();
+    })
     .then((data) => {
-      cases.unshift({ ...newPost, id: data });
-      cases.reverse();
-      console.log(cases);
-      cases.forEach((element) => {
-        caseList(
-          element.subject,
-          element.email,
-          element.message,
-          element.created,
-          element.id,
-          element.status.id
-        );
-      });
+      console.log(data);
+      form.reset();
+      fetch(CASE_URL + data)
+        .then((res) => res.json())
+        .then((data2) => {
+          cases.unshift(data2);
+          console.log(cases);
+          container.innerHTML = '';
+          cases.forEach((element) => {
+            caseList(
+              element.subject,
+              element.email,
+              element.message,
+              element.created,
+              element.id,
+              element.status.id
+            );
+          });
+        });
+
+      // cases.unshift({ ...newPost, id: data });
+      // cases.reverse();
+      // console.log(cases);
+      // cases.forEach((element) => {
+      //   caseList(
+      //     element.subject,
+      //     element.email,
+      //     element.message,
+      //     element.created,
+      //     element.id,
+      //     element.status.id
+      //   );
+      // });
     })
     .catch((err) => console.log(err));
 };
@@ -156,7 +183,7 @@ const caseList = (subject, email, message, time, id, statusId) => {
   caseContainer.appendChild(addCommentLink);
 
   // Add the caseContainer element to the container element
-  containter.appendChild(caseContainer);
+  container.appendChild(caseContainer);
 };
 getCase();
 
@@ -168,7 +195,7 @@ const filterCases = () => {
       caseItem.email.toLowerCase().includes(filterValue) ||
       caseItem.message.toLowerCase().includes(filterValue)
   );
-  containter.innerHTML = ''; // Clear the container element
+  container.innerHTML = ''; // Clear the container element
   filteredCases.forEach((element) => {
     caseList(
       element.subject,
