@@ -57,20 +57,6 @@ const postCase = () => {
             );
           });
         });
-
-      // cases.unshift({ ...newPost, id: data });
-      // cases.reverse();
-      // console.log(cases);
-      // cases.forEach((element) => {
-      //   caseList(
-      //     element.subject,
-      //     element.email,
-      //     element.message,
-      //     element.created,
-      //     element.id,
-      //     element.status.id
-      //   );
-      // });
     })
     .catch((err) => console.log(err));
 };

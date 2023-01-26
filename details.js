@@ -18,7 +18,6 @@ finished.addEventListener('click', (e) => {
   if (caseId) {
     putStatus(caseId, 3);
   }
-  // Put function ta emot(id, 3);
 });
 
 ongoing.addEventListener('click', (e) => {
